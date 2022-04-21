@@ -1,37 +1,63 @@
-function Song({name, picture}) {
+import PropTypes from "prop-types";
+
+function Song({name, picture, good}) {
   return (
     <div>
-      <h2> I like {name}</h2>
-      <img src={picture} />
+      <h2> G-FRIEND : {name}</h2>
+      <h4>♥{good}</h4>
+      <img src={picture} alt={name} />
     </div>
   );
 }
 
-const foodILike = [
+const songILike = [
   {
+    id : 1,
     name : 'White',
-    image : 'https://image.bugsm.co.kr/album/images/500/4778/477881.jpg'
+    image : 'https://image.bugsm.co.kr/album/images/500/4778/477881.jpg',
+    good: 19798
   },
-  { name : 'Vacation',
-  image : 'https://image.bugsm.co.kr/album/images/500/201809/20180906.jpg'
+  { 
+    id : 2,
+    name : 'Vacation',
+    image : 'https://image.bugsm.co.kr/album/images/500/201809/20180906.jpg',
+    good: 17439
   },
-  { name : 'Glow',
-    image : 'https://image.bugsm.co.kr/album/images/500/202225/20222528.jpg'
+  { 
+    id : 3,
+    name : 'Glow',
+    image : 'https://image.bugsm.co.kr/album/images/500/202225/20222528.jpg',
+    good: 8900
   },
-  { name : 'Fever',
-    image : 'https://image.bugsm.co.kr/album/images/500/202631/20263150.jpg'
+  { 
+    id : 4,
+    name : 'Fever',
+    image : 'https://image.bugsm.co.kr/album/images/500/202631/20263150.jpg',
+    good: 61431
   },
-  { name : 'Flower',
-    image : 'https://image.yes24.com/goods/67542029/L'
+  { 
+    id : 5,
+    name : 'Flower',
+    image : 'https://image.yes24.com/goods/67542029/L',
+    good: 9867
   }
 ];
+
 
 function App() {
   return ( 
     <div> 
-     {foodILike.map(gf => <Song key={gf.name} name={gf.name} picture={gf.image}/>)}
+      {songILike.map ( gf => 
+        <Song key={gf.id} name={gf.name} picture={gf.image} good={gf.good}/>
+      )}
     </div>
   );
+}
+
+Song.prototype = {
+  name:PropTypes.string.isRequired,
+  picture:PropTypes.string.isRequired,
+  good:PropTypes.number
 }
 
 export default App;
